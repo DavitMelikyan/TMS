@@ -14,10 +14,10 @@ void displayMainMenu() {
 }
 
 int main() {
-	std::cout << "Hello to the Task Management System!\n";
+    std::cout << "Hello to the Task Management System!\n";
     TaskManager manager;
     User* user = nullptr;
-	int choice = 0;
+    int choice = 0;
     while (true) {
         displayMainMenu();
         std::cin >> choice;
@@ -25,10 +25,9 @@ int main() {
             case 1:
                 manager.register_user();
                 break;
-            case 2: {
+            case 2:
                 user = manager.login();
                 break;
-            }
             case 3:
                 manager.logout();
                 user = nullptr;

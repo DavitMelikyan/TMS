@@ -58,14 +58,14 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const Task task);
 
 	bool operator==(const Task& other) const;
-    bool operator!=(const Task& other) const;
-    bool operator<(const Task& other) const;
-    bool operator>(const Task& other) const;
+    	bool operator!=(const Task& other) const;
+    	bool operator<(const Task& other) const;
+    	bool operator>(const Task& other) const;
 
-    Task& operator++();    
-    const Task operator++(int);  
-    Task& operator--();    
-    const Task operator--(int); 
+    	Task& operator++();    
+    	const Task operator++(int);  
+    	Task& operator--();    
+    	const Task operator--(int); 
 };
 	
 #endif

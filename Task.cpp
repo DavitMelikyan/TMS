@@ -21,7 +21,7 @@ void Task::editTask(const Task& task) {
 	setDescription(task.m_description);
 	setDeadline(task.m_deadline);
 	setCategory(task.m_category);
-    setStatus(task.m_status);
+    	setStatus(task.m_status);
 	setPriority(task.m_priority);
 }
 
@@ -92,31 +92,31 @@ void Task::setPriority(const Priority priority) {
        
 std::istream& operator>>(std::istream& is, Priority& priority) {
 	int value = 0;
-    is >> value;
+    	is >> value;
 	if (value < 0 || value > 3) {
 		std::cout << "Invalid input\n";
 		exit(-1);
 	}
-    priority = static_cast<Priority>(value);
-    return is;
+    	priority = static_cast<Priority>(value);
+    	return is;
 }
 
 std::ostream& operator<<(std::ostream& os, const Priority priority) {
 	switch (priority) {
         case Priority::LOW:
-			os << "Low"; 
-			break;
-		case Priority::MEDIUM: 
-			os << "Medium"; 
-			break;
+		os << "Low"; 
+		break;
+	case Priority::MEDIUM: 
+		os << "Medium"; 
+		break;
         case Priority::HIGH: 
-			os << "High"; 
-			break;
+		os << "High"; 
+		break;
         case Priority::URGENT: 
-			os << "Urgent"; 
-			break;
-    }
-    return os;
+		os << "Urgent"; 
+		break;
+    	}
+    	return os;
 }
 
 std::istream& operator>>(std::istream& is, Status& status) {
@@ -126,23 +126,23 @@ std::istream& operator>>(std::istream& is, Status& status) {
 		std::cout << "Invalid input\n";
 		exit(-1);
 	}
-    status = static_cast<Status>(value);
-    return is;
+    	status = static_cast<Status>(value);
+   	return is;
 }
 
 std::ostream& operator<<(std::ostream& os, const Status status) {
 	switch (status) {
         case Status::NOT_STARTED: 
-			os << "Not Started"; 
-			break;
+		os << "Not Started"; 
+		break;
         case Status::IN_PROGRESS: 
-			os << "In Progress"; 
-			break;
+		os << "In Progress"; 
+		break;
         case Status::COMPLETED: 
-			os << "Completed"; 
-			break;
-    }
-    return os;
+		os << "Completed"; 
+		break;
+    	}
+    	return os;
 }
 
 std::istream& operator>>(std::istream& is, Task& task) {
@@ -150,28 +150,27 @@ std::istream& operator>>(std::istream& is, Task& task) {
 	std::string description;
 	std::string deadline;
 	std::string category;
-    int priority = 0;
+    	int priority = 0;
 	int status = 0;
-    std::cout << "Enter the task title: ";
-    is >> title;
-    std::cout << "Enter the task description: ";
-    is >> description;
-    std::cout << "Enter the task deadline: ";
-    is >> deadline;
-    std::cout << "Enter the task category: ";
-    is >> category;
-    std::cout << "Enter priority (0 - Low, 1 - Medium, 2 - High, 3 - Urgent): ";
-    is >> priority;
-    std::cout << "Enter status (0 - Not Started, 1 - In Progress, 2 - Completed): ";
-    is >> status;
-
-    task.setTitle(title);
-    task.setDescription(description);
-    task.setDeadline(deadline);
-    task.setCategory(category);
-    task.setPriority(static_cast<Priority>(priority));
-    task.setStatus(static_cast<Status>(status));
-    return is;
+    	std::cout << "Enter the task title: ";
+    	is >> title;
+    	std::cout << "Enter the task description: ";
+    	is >> description;
+    	std::cout << "Enter the task deadline: ";
+    	is >> deadline;
+    	std::cout << "Enter the task category: ";
+    	is >> category;
+    	std::cout << "Enter priority (0 - Low, 1 - Medium, 2 - High, 3 - Urgent): ";
+    	is >> priority;
+    	std::cout << "Enter status (0 - Not Started, 1 - In Progress, 2 - Completed): ";
+    	is >> status;
+    	task.setTitle(title);
+    	task.setDescription(description);
+    	task.setDeadline(deadline);
+   	task.setCategory(category);
+   	task.setPriority(static_cast<Priority>(priority));
+   	task.setStatus(static_cast<Status>(status));
+    	return is;
 }
 
 std::ostream& operator<<(std::ostream& os, const Task task) {
@@ -197,30 +196,30 @@ bool Task::operator>(const Task& other) const {
 
 Task& Task::operator++() {
 	if (m_status != Status::COMPLETED) {
-        m_status = static_cast<Status>(static_cast<int>(m_status) + 1);
-    }
-    return *this;
+        	m_status = static_cast<Status>(static_cast<int>(m_status) + 1);
+    	}
+    	return *this;
 }   
 
 const Task Task::operator++(int) {
 	Task tmp = *this;
 	if (m_status != Status::COMPLETED) {
-        m_status = static_cast<Status>(static_cast<int>(m_status) + 1);
-    }
-    return tmp;
+        	m_status = static_cast<Status>(static_cast<int>(m_status) + 1);
+    	}
+   	return tmp;
 }  
 
 Task& Task::operator--() {
 	if (m_status != Status::NOT_STARTED) {
-        m_status = static_cast<Status>(static_cast<int>(m_status) - 1);
-    }
+        	m_status = static_cast<Status>(static_cast<int>(m_status) - 1);
+    	}
 	return *this;
 }   
 
 const Task Task::operator--(int) {
 	Task tmp = *this;
 	if (m_status != Status::NOT_STARTED) {
-        m_status = static_cast<Status>(static_cast<int>(m_status) - 1);
-    }
+        	m_status = static_cast<Status>(static_cast<int>(m_status) - 1);
+  	}
 	return tmp;
 } 

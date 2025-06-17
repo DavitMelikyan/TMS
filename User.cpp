@@ -7,28 +7,28 @@ User::User(const std::string& username, const std::string& password) : m_name{us
 }
 
 User::User(const User& other) : m_name{other.m_name}, m_id{other.m_id}, m_passwd{other.m_passwd}, is_logged{other.is_logged} {
-    int otherSize = other.m_tasks.size();
+    	int otherSize = other.m_tasks.size();
 	for (int i = 0; i < otherSize; ++i) {
-        m_tasks.push_back(new Task(*other.m_tasks[i]));
-    }
+        	m_tasks.push_back(new Task(*other.m_tasks[i]));
+    	}
 }
 
 User& User::operator=(const User& other) {
-    if (this == &other) {
+    	if (this == &other) {
 		return *this;
 	}
-    for (int i = 0; i < m_tasks.size(); ++i) {
-        delete m_tasks[i];
-    }
-    m_tasks.clear();
-    m_id = other.m_id;
-    m_name = other.m_name;
-    m_passwd = other.m_passwd;
-    is_logged = other.is_logged;
-    for (int i = 0; i < other.m_tasks.size(); ++i) {
-        m_tasks.push_back(new Task(*other.m_tasks[i]));
-    }
-    return *this;
+    	for (int i = 0; i < m_tasks.size(); ++i) {
+        	delete m_tasks[i];
+    	}
+    	m_tasks.clear();
+    	m_id = other.m_id;
+    	m_name = other.m_name;
+    	m_passwd = other.m_passwd;
+    	is_logged = other.is_logged;
+    	for (int i = 0; i < other.m_tasks.size(); ++i) {
+        	m_tasks.push_back(new Task(*other.m_tasks[i]));
+    	}
+    	return *this;
 }
 
 User::User(User&& other) noexcept : m_id{std::move(other.m_id)}, m_name{std::move(other.m_name)}, m_passwd{std::move(other.m_passwd)}, m_tasks{std::move(other.m_tasks)}, is_logged{other.is_logged} {
@@ -36,20 +36,20 @@ User::User(User&& other) noexcept : m_id{std::move(other.m_id)}, m_name{std::mov
 }
 
 User& User::operator=(User&& other) noexcept {
-    if (this == &other) {
+    	if (this == &other) {
 		return *this;
 	}
-    for (int i = 0; i < m_tasks.size(); ++i) {
-        delete m_tasks[i];
-    }
-    m_tasks = std::move(other.m_tasks);
-    m_id = std::move(other.m_id);
-    m_name = std::move(other.m_name);
-    m_passwd = std::move(other.m_passwd);
-    is_logged = other.is_logged;
+    	for (int i = 0; i < m_tasks.size(); ++i) {
+        	delete m_tasks[i];
+    	}
+    	m_tasks = std::move(other.m_tasks);
+    	m_id = std::move(other.m_id);
+    	m_name = std::move(other.m_name);
+    	m_passwd = std::move(other.m_passwd);
+    	is_logged = other.is_logged;
 	other.is_logged = false;
-    other.m_tasks.clear();
-    return *this;
+    	other.m_tasks.clear();
+    	return *this;
 }
 
 
@@ -142,26 +142,26 @@ void User::displayTask(const std::string& title) {
 }
 
 bool User::operator==(const User& other) const {
-    return m_id == other.m_id;
+    	return m_id == other.m_id;
 }
 
 bool User::operator!=(const User& other) const {
-    return !(*this == other);
+    	return !(*this == other);
 }
 
 User::operator bool() const {
-    return is_logged;
+    	return is_logged;
 }
 
 std::ostream& operator<<(std::ostream& os, const User& user) {
-    os << "Username: " << user.m_name << std::endl << "User ID: " << user.m_id << std::endl << "Is logged: " << user.is_logged;
-    return os;
+    	os << "Username: " << user.m_name << std::endl << "User ID: " << user.m_id << std::endl << "Is logged: " << user.is_logged;
+    	return os;
 }
 
 std::istream& operator>>(std::istream& is, User& user) {
-    std::cout << "Enter username: ";
-    is >> user.m_name;
-    std::cout << "Enter password: ";
-    is >> user.m_passwd;
-    return is;
+    	std::cout << "Enter username: ";
+    	is >> user.m_name;
+    	std::cout << "Enter password: ";
+    	is >> user.m_passwd;
+    	return is;
 }
