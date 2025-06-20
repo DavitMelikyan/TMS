@@ -7,5 +7,6 @@
 #include "Task.h"
 #include "User.h"
 #include "TaskManager.h"
+#include <gtest/gtest.h>
 
 #endif
