@@ -67,10 +67,9 @@ TEST(TaskTest, IncDec) {
 }
 
 TEST(TaskTest, Comp) {
-    Task tlow("Low", "A", "B", "C", Priority::LOW, Status::NOT_STARTED, "1");
-    Task thigh("High", "D", "E", "F", Priority::HIGH, Status::NOT_STARTED, "1");
-
-    EXPECT_TRUE(tlow < thigh);
-    EXPECT_TRUE(thigh > tlow);
-    EXPECT_TRUE(tlow != thigh);
+    	Task tlow("Low", "A", "B", "C", Priority::LOW, Status::NOT_STARTED, "1");
+    	Task thigh("High", "D", "E", "F", Priority::HIGH, Status::NOT_STARTED, "1");
+    	EXPECT_TRUE(tlow < thigh);
+    	EXPECT_TRUE(thigh > tlow);
+    	EXPECT_TRUE(tlow != thigh);
 }
